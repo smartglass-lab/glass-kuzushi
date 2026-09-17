@@ -1,0 +1,80 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  background: #000000; /* 加算式ディスプレイでは透明＝現実の部屋が透ける */
+  color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  user-select: none;
+}
+
+#app { position: relative; width: 600px; height: 600px; }
+#field { position: absolute; left: 0; top: 0; width: 600px; height: 600px; }
+.hidden { display: none !important; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: absolute; left: 0; top: 0; width: 600px; height: 38px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 14px;
+  font-size: 19px; font-weight: 700; color: #e6e9f0;
+  text-shadow: 0 0 6px rgba(0,0,0,0.9);
+}
+#hud-score { font-size: 24px; color: #ffd166; }
+
+#hint {
+  position: absolute; left: 0; bottom: 0; width: 600px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: #cfd5e0;
+  text-shadow: 0 0 6px rgba(0,0,0,0.9);
+}
+#hint.hot { color: #ffd166; }
+
+/* ---------- オーバーレイ ---------- */
+.overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+.panel {
+  width: 470px;
+  padding: 22px 26px;
+  border-radius: 18px;
+  background: #14161c;
+  border: 2px solid #2e3340;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+.t-logo { font-size: 58px; line-height: 1; margin-bottom: 4px; }
+.t-title { font-size: 34px; font-weight: 800; letter-spacing: 1px; }
+.t-sub { font-size: 17px; color: #9aa3b5; margin: 4px 0 16px; }
+.t-rec { font-size: 16px; color: #9aa3b5; margin-top: 14px; }
+.menu { display: flex; flex-direction: column; gap: 10px; }
+
+.rail-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: #1c1f27;
+  border: 2px solid #2e3340;
+  font-size: 22px; font-weight: 700; color: #dfe4ee;
+  opacity: 0.75;
+  transition: transform 160ms cubic-bezier(0.6, 0, 0.4, 1), border-color 160ms, opacity 160ms;
+  cursor: pointer;
+}
+.rail-btn.ghost { color: #aab2c2; }
+.rail-btn.cur {
+  opacity: 1; transform: scale(1.04);
+  border-color: #ffd166; box-shadow: 0 0 18px rgba(255, 209, 102, 0.45);
+}
+
+.h-title { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+.h-list { text-align: left; font-size: 16px; line-height: 1.45; color: #dfe4ee; margin: 0 0 14px 22px; }
+.h-list li { margin-bottom: 6px; }
+.h-list b { color: #ffd166; }
+
+.r-title { font-size: 30px; font-weight: 800; }
+.r-score { font-size: 52px; font-weight: 800; color: #ffd166; margin: 2px 0; }
+.r-sub { font-size: 18px; color: #9aa3b5; margin-bottom: 14px; }
+.btns { display: flex; flex-direction: column; gap: 10px; }

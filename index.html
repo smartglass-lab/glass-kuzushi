@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Meta Ray-Ban Display 用のブロックくずし。←→でパドル、タップで発射。ワイド・マルチボール・スロー・ライフの4種のパワーアップ、5ステージ＋ループで加速。ハイスコア保存。依存ライブラリなし・オフライン動作。">
+  <meta name="mrbd-web-app-capable" content="yes">
+  <title>グラスブロックくずし — Glass Kuzushi</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="field" width="600" height="600"></canvas>
+
+    <div id="hud">
+      <span id="hud-stage">🧱 ステージ 1</span>
+      <span id="hud-score">0</span>
+      <span id="hud-lives">❤️❤️❤️</span>
+    </div>
+    <div id="hint"></div>
+
+    <div id="title" class="overlay">
+      <div class="panel">
+        <div class="t-logo">🧱</div>
+        <div class="t-title">グラスブロックくずし</div>
+        <div class="t-sub">←→でパドル、タップで発射</div>
+        <div class="menu">
+          <div class="rail-btn cur" data-item="0">▶ はじめる</div>
+          <div class="rail-btn" data-item="1">ステージ　◀ <span id="m-stage">1</span> ▶</div>
+          <div class="rail-btn" data-item="2">❓ あそびかた</div>
+        </div>
+        <div class="t-rec" id="t-rec">ハイスコア 0</div>
+      </div>
+    </div>
+
+    <div id="help" class="overlay hidden">
+      <div class="panel">
+        <div class="h-title">❓ あそびかた</div>
+        <ul class="h-list">
+          <li><b>←→</b> でパドルを動かす。<b>タップ</b> でボールを発射</li>
+          <li>パドルの<b>端</b>で打つほど鋭い角度に。まん中はまっすぐ</li>
+          <li>銀のブロックは<b>2回</b>当てるとこわれる</li>
+          <li>落ちてくるカプセルをパドルで取るとパワーアップ:<br><b>W</b> ワイド　<b>M</b> マルチボール　<b>S</b> スロー　<b>♥</b> ライフ</li>
+          <li>ブロックを全部こわすとつぎのステージ。5ステージでひとまわり、どんどん速くなる</li>
+        </ul>
+        <div class="rail-btn cur">◀ とじる</div>
+      </div>
+    </div>
+
+    <div id="clear" class="overlay hidden">
+      <div class="panel">
+        <div class="r-title" id="c-title">✨ ステージ1 クリア！</div>
+        <div class="r-sub" id="c-sub">スコア 1200</div>
+        <div class="rail-btn cur">つぎのステージへ ▶</div>
+      </div>
+    </div>
+
+    <div id="result" class="overlay hidden">
+      <div class="panel">
+        <div class="r-title" id="r-title">💥 ゲームオーバー</div>
+        <div class="r-score" id="r-score">1200</div>
+        <div class="r-sub" id="r-sub">ハイスコア 1200</div>
+        <div class="btns">
+          <div class="rail-btn cur" data-act="retry">🔄 もういちど</div>
+          <div class="rail-btn ghost" data-act="title">◀ タイトルへ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
